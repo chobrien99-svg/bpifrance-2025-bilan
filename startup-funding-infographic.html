@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPifrance 2025 — Startup Funding Highlights</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0b0f1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+
+    .infographic {
+      width: 1200px;
+      max-width: 100%;
+      background: #111827;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #0037a3 0%, #0055d4 50%, #0073ff 100%);
+      padding: 36px 48px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 90% 50%, rgba(255,255,255,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 60% at 10% 80%, rgba(0,0,0,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-left { position: relative; z-index: 1; }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .logo-badge {
+      background: #fff;
+      border-radius: 10px;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-badge-text {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0037a3;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-badge-text span {
+      color: #e63329;
+    }
+
+    .header-year {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .header-title {
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+    }
+
+    .header-subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .header-right {
+      position: relative;
+      z-index: 1;
+      text-align: right;
+    }
+
+    .header-kpi-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+
+    .header-kpi-value {
+      font-size: 54px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .header-kpi-value sup {
+      font-size: 28px;
+      letter-spacing: -1px;
+      vertical-align: super;
+    }
+
+    .header-kpi-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(52, 211, 153, 0.2);
+      color: #34d399;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 8px;
+      border: 1px solid rgba(52, 211, 153, 0.35);
+    }
+
+    /* ── Cards row ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+
+    .card {
+      padding: 32px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+
+    .card:last-child { border-right: none; }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    /* Card accent colors */
+    .card-1::before { background: linear-gradient(90deg, #f97316, #fb923c); }
+    .card-2::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .card-3::before { background: linear-gradient(90deg, #06b6d4, #22d3ee); }
+    .card-4::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .card-5::before { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-1 .card-icon { background: rgba(249,115,22,0.15); }
+    .card-2 .card-icon { background: rgba(139,92,246,0.15); }
+    .card-3 .card-icon { background: rgba(6,182,212,0.15); }
+    .card-4 .card-icon { background: rgba(16,185,129,0.15); }
+    .card-5 .card-icon { background: rgba(244,63,94,0.15); }
+
+    .card-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .card-1 .card-icon svg { color: #fb923c; }
+    .card-2 .card-icon svg { color: #a78bfa; }
+    .card-3 .card-icon svg { color: #22d3ee; }
+    .card-4 .card-icon svg { color: #34d399; }
+    .card-5 .card-icon svg { color: #fb7185; }
+
+    .card-number {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+
+    .card-1 .card-number { color: #fb923c; }
+    .card-2 .card-number { color: #a78bfa; }
+    .card-3 .card-number { color: #22d3ee; }
+    .card-4 .card-number { color: #34d399; }
+    .card-5 .card-number { color: #fb7185; }
+
+    .card-number sub {
+      font-size: 20px;
+      font-weight: 800;
+      vertical-align: baseline;
+      letter-spacing: -0.5px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #f9fafb;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: #9ca3af;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-desc strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    .card-1 .card-badge { background: rgba(249,115,22,0.15); color: #fb923c; }
+    .card-2 .card-badge { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .card-3 .card-badge { background: rgba(6,182,212,0.15); color: #22d3ee; }
+    .card-4 .card-badge { background: rgba(16,185,129,0.15); color: #34d399; }
+    .card-5 .card-badge { background: rgba(244,63,94,0.15); color: #fb7185; }
+
+    /* ── Bar chart row ── */
+    .chart-row {
+      padding: 0 48px 36px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .bar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 80px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px 8px 4px 4px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      width: 100%;
+      border-radius: 8px 8px 4px 4px;
+      position: relative;
+      transition: height 0.5s ease;
+    }
+
+    .bar-1 { background: linear-gradient(180deg, #fb923c, #f97316); height: 100%; }
+    .bar-2 { background: linear-gradient(180deg, #a78bfa, #8b5cf6); height: 69%; }
+    .bar-3 { background: linear-gradient(180deg, #22d3ee, #06b6d4); height: 33%; }
+    .bar-4 { background: linear-gradient(180deg, #34d399, #10b981); height: 22%; }
+    .bar-5 { background: linear-gradient(180deg, #fb7185, #f43f5e); height: 11%; }
+
+    .bar-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-note {
+      font-size: 11.5px;
+      color: #4b5563;
+    }
+
+    .footer-note span {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    .footer-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .footer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .footer-dot:nth-child(1) { background: #fb923c; }
+    .footer-dot:nth-child(2) { background: #a78bfa; }
+    .footer-dot:nth-child(3) { background: #22d3ee; }
+    .footer-dot:nth-child(4) { background: #34d399; }
+    .footer-dot:nth-child(5) { background: #fb7185; }
+  </style>
+</head>
+<body>
+<div class="infographic">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-row">
+        <div class="logo-badge">
+          <span class="logo-badge-text">Bpi<span>france</span></span>
+        </div>
+        <div class="header-year">Bilan 2025</div>
+      </div>
+      <h1 class="header-title">Startup &amp; Innovation Funding</h1>
+      <p class="header-subtitle">5 Key Data Points — Annual Activity Report 2025</p>
+    </div>
+    <div class="header-right">
+      <div class="header-kpi-label">Total Deployed</div>
+      <div class="header-kpi-value"><sup>€</sup>72<sub style="font-size:26px;font-weight:800;letter-spacing:-1px;">B</sub></div>
+      <div class="header-kpi-change">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
+        +20% vs 2024
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Cards -->
+  <div class="cards">
+
+    <!-- Card 1: Total Deployment -->
+    <div class="card card-1">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+        </svg>
+      </div>
+      <div class="card-number">€72<sub>B</sub></div>
+      <div class="card-title">Total Capital<br>Deployed</div>
+      <div class="card-desc">
+        Record-breaking <strong>€72 billion</strong> deployed across all instruments — a <strong>+20% leap</strong> from €60B in 2024, confirming BPifrance's dominant role in the French innovation economy.
+      </div>
+      <div class="card-badge">&#9650; +20% YoY</div>
+    </div>
+
+    <!-- Card 2: Fund-of-Funds -->
+    <div class="card card-2">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          <path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/>
+          <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+        </svg>
+      </div>
+      <div class="card-number">€8<sub>B</sub></div>
+      <div class="card-title">Fund-of-Funds<br>New Commitments</div>
+      <div class="card-desc">
+        <strong>Record €8 billion</strong> in new subscriptions to 700+ partner VC funds, providing indirect financing to <strong>7,000 French companies</strong> in a bold countercyclical move.
+      </div>
+      <div class="card-badge">&#127942; Record</div>
+    </div>
+
+    <!-- Card 3: Deep Tech -->
+    <div class="card card-3">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="card-number">€5<sub>B</sub></div>
+      <div class="card-title">Deep Tech<br>Ecosystem</div>
+      <div class="card-desc">
+        <strong>€5 billion</strong> deployed across <strong>1,000 deep tech startups</strong>, including €414M direct equity in 90 companies — cementing Paris as a <strong>Top 3 global</strong> deep tech hub.
+      </div>
+      <div class="card-badge">&#127758; #3 Global</div>
+    </div>
+
+    <!-- Card 4: Growth Capital -->
+    <div class="card card-4">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+        </svg>
+      </div>
+      <div class="card-number">€2.5<sub>B</sub></div>
+      <div class="card-title">Growth Capital<br>Invested</div>
+      <div class="card-desc">
+        <strong>€2.5 billion</strong> injected into <strong>168 companies</strong> at growth stage, generating <strong>€900M in capital gains</strong> on €3.2B of disposals at an unprecedented <strong>8× average multiple</strong>.
+      </div>
+      <div class="card-badge">&#128200; 8× Multiple</div>
+    </div>
+
+    <!-- Card 5: AI Investments -->
+    <div class="card card-5">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3"/>
+        </svg>
+      </div>
+      <div class="card-number">€240<sub>M</sub></div>
+      <div class="card-title">AI Equity<br>Investments</div>
+      <div class="card-desc">
+        <strong>€240 million</strong> in direct equity into <strong>9 major AI companies</strong> incl. Mistral &amp; Poolside, backed by a <strong>€10B multi-year AI plan</strong> announced at the Paris AI Summit.
+      </div>
+      <div class="card-badge">&#129302; 9 AI Co's</div>
+    </div>
+
+  </div>
+
+  <!-- Comparative Bar Chart -->
+  <div class="chart-row">
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill bar-1"></div></div>
+      <div class="bar-label">Total<br>Deploy.</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+      <div class="bar-label">Fund-of-<br>Funds</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill bar-3"></div></div>
+      <div class="bar-label">Deep<br>Tech</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+      <div class="bar-label">Growth<br>Capital</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill bar-5"></div></div>
+      <div class="bar-label">AI<br>Equity</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-note">
+      Source: <span>BPifrance Bilan d'Activité 2025</span> — Published 17 February 2026
+    </div>
+    <div class="footer-dots">
+      <div class="footer-dot"></div>
+      <div class="footer-dot"></div>
+      <div class="footer-dot"></div>
+      <div class="footer-dot"></div>
+      <div class="footer-dot"></div>
+    </div>
+    <div class="footer-note">
+      <span>bpifrance.fr</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
